@@ -1,0 +1,40 @@
+<div style="display: flex; flex-direction: column; margin: 50px;">
+  @if(userYetki === "admin"){
+    <ng-container >
+      <form>
+        <mat-form-field style="width: 100%;" appearance="outline">
+          <mat-label>Müdürlükler</mat-label>
+          <mat-select  name="mudurluk" (selectionChange)="onSelectionChange($event)">
+            <mat-option *ngFor="let mudurluk of mudurluklist" [value]="mudurluk.birim_kodu">{{mudurluk.birim_adi}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+    </ng-container>}
+ 
+    <div class="example-container" tabindex="0">
+      <h3> {{currentUser.person_mudurluk_acik}} KULLANICILAR</h3>
+      <mat-form-field style="width: 100%;"  appearance="outline">
+        <mat-label>Aramak istediğiniz kullanıcı bilgilerini yazınız</mat-label>
+        <input matInput (keyup)="applyFilter($event)" #input>
+      </mat-form-field>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table" style="padding: 10px">
+        @for (column of columns; track column) {
+          <ng-container matColumnDef="{{column.columnDef}}">
+            <th mat-header-cell *matHeaderCellDef>
+              {{column.header}}
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{element[column.columnDef]}}
+              <ng-container *ngIf="column.columnDef === 'Yetkilendir'">
+                <button color="primary" (click)="yetkilendir(element)" mat-icon-button>
+                  <mat-icon>add_circle</mat-icon>        
+                </button>
+              </ng-container>
+            </td>
+          </ng-container>
+        }
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </div>

@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Görev Atama Ekranı</h1>
+<div mat-dialog-content style="width: 1000px;">
+  <p style="margin-top: 20px; margin-bottom: 30px">Lütfen ilgili talebi atamak istediğiniz kullanıcıyı seçiniz</p>
+  <mat-selection-list #users [(ngModel)]="selectedUser" [multiple]="false">
+    <mat-list-option *ngFor="let user of userList" [value]="user">
+        {{ user.ad }} {{ user.soy }}
+    </mat-list-option>
+  </mat-selection-list>
+  <p>
+    Görev atanacak kullanıcı: {{ selectedUser }}
+    <!-- ??? -->
+  </p>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="closeDialog()">Kapat</button>
+  <button mat-button (click)="assignTask()">Görevlendir</button>
+</div>

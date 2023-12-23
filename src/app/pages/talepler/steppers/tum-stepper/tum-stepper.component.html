@@ -1,0 +1,26 @@
+<div class="example-container" tabindex="0">
+    <mat-form-field style="width: 100%;"  appearance="outline">
+      <mat-label>Aramak istediğiniz talep bilgilerini yazınız</mat-label>
+      <input matInput (keyup)="applyFilter($event, dataSource)" #input>
+    </mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table" style="padding: 10px">
+      @for (column of columns; track column) {
+        <ng-container matColumnDef="{{column.columnDef}}">
+          <th mat-header-cell *matHeaderCellDef>
+            {{column.header}}
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{element[column.columnDef]}}
+            <ng-container *ngIf="column.columnDef === 'gorevbuton'">
+              <button mat-icon-button>
+                <mat-icon>check</mat-icon>        
+              </button>
+            </ng-container>
+          </td>
+        </ng-container>
+      }
+      <tr mat-header-row *matHeaderRowDef="displayedCols"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedCols;"></tr>
+    </table>
+</div>

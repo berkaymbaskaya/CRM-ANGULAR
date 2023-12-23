@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    background-color: whitesmoke;
+    overflow-y: hidden;
+}
+
+mat-toolbar {
+    background-color: #0079c1;
+    padding: 5px;
+}
+
+app-login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.elazig {
+    background-color: #0079c1;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

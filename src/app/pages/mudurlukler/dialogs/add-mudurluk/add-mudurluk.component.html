@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Kullanıcı Ekleme Ekranı</h1>
+<div mat-dialog-content style="width: 1000px;">
+  <!-- <p>{{data.kod}}</p> -->
+  <p style="margin-top: 20px; margin-bottom: 30px">Lütfen eklemek istediğiniz müdürlük bilgilerini giriniz.</p>
+  <div style="display: flex; gap: 20px">
+    <mat-form-field style=" width: 20%;" appearance="outline">
+      <mat-label>Müdürlük Kodu</mat-label>
+      <input matInput [(ngModel)]="addData.kodu" type="number">
+    </mat-form-field>
+    <mat-form-field style=" width: 100%;" appearance="outline">
+      <mat-label>Müdürlük Adı</mat-label>
+      <input matInput [(ngModel)]="addData.adi">
+    </mat-form-field>
+  </div>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">Kapat</button>
+  <button mat-button (click)="addMudurluk()">Ekle</button>
+</div>

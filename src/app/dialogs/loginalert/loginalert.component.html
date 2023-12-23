@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>SMS Doğrulama</h1>
+<div mat-dialog-content>
+  @if (data.status) {
+  <p>{{data.tel}} numaralı cep telefonuna sms gönderilmiştir.</p>
+  <!-- <p>Lütfen telefonunuza gelen kodu aşağıya giriniz.</p> -->
+  <!-- <mat-form-field style=" width: 100%;" appearance="outline">
+    <mat-label>SMS Kodu</mat-label>
+    <input matInput [(ngModel)]="data.smscode" maxlength="4">
+  </mat-form-field> -->
+  }
+  @if (!data.status) {
+    <p>TC numarasını yanlış girdiniz. Tekrar deneyeniniz.</p>
+  }
+</div>
+<div mat-dialog-actions align="end">
+  <!-- @if (data.status) {
+    <button mat-button [mat-dialog-close]="data.smscode" cdkFocusInitial>Tamam</button>
+  } -->
+  <!-- @if (!data.status) {
+    <button mat-button [mat-dialog-close]="data.smscode" cdkFocusInitial>Tekrar Gönder</button>
+  } -->
+  <button mat-button (click)="onNoClick()">Kapat</button>
+</div>

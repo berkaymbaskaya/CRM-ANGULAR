@@ -1,0 +1,28 @@
+<div style="display: flex;justify-content:center;align-items: center;width: 100%;padding-top: 2rem;">
+    <mat-card class="example-card">
+        <mat-card-header style="flex-direction: column;">
+            <div style="width: 100%;display: flex;align-items: center;justify-content: center; margin-bottom: 2rem;">
+                <mat-icon style=" height: 100px;width: 100px;font-size: 100px;color: #7196ac;" mat-icon>person</mat-icon>
+            </div>
+            <!-- <img mat-card-md-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"  alt="Image of a Shiba Inu"> -->
+          <mat-card-title-group style="flex-direction: column;margin-bottom: 1rem;">
+            <mat-card-title>{{user?.ad }} {{user?.soy }}</mat-card-title>
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-card-subtitle>TC:{{user?.tcno }} </mat-card-subtitle>
+            <mat-divider></mat-divider>
+            <mat-card-subtitle>Sicil No:{{user?.sicilno }}</mat-card-subtitle>
+            <mat-divider></mat-divider>
+            <mat-card-subtitle>Müdürlük:{{user?.person_mudurluk_acik }}</mat-card-subtitle>
+            <mat-divider></mat-divider>
+            <mat-card-subtitle>Yetki:{{user?.yetki }}</mat-card-subtitle>
+            <mat-divider></mat-divider>
+            <mat-card-subtitle>Yetki:{{user?.cep }}</mat-card-subtitle>
+            <mat-divider></mat-divider>
+        </mat-card-content>
+        <mat-card-footer style="align-items: center;display: flex;justify-content: center;padding: 1rem;">
+            <button (click)="logOut()" mat-stroked-button color="warn">Çıkış</button>
+        </mat-card-footer>
+      </mat-card>
+</div>

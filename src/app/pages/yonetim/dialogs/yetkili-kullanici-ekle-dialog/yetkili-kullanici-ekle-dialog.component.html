@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Kullanıcı Ekleme Ekranı</h1>
+<div mat-dialog-content>
+  <!-- <p>{{data.kod}}</p> -->
+  <p >Lütfen eklemek istediğiniz personele ait TCKN giriniz.</p>
+  <div>
+    <mat-form-field style=" width: 50%;" appearance="outline">
+      <mat-label>TCKN No</mat-label>
+      <input [(ngModel)]="tc" matInput type="number">
+    </mat-form-field>
+  </div>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="close()" >Kapat</button>
+  <button mat-button (click)="add()" >Ekle</button>
+</div>

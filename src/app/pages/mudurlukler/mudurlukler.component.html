@@ -1,0 +1,34 @@
+<div style="display: flex; flex-direction: column; margin: 50px;">
+
+    <div style="display: flex; gap: 20px">
+        <mat-form-field appearance="outline">
+            <mat-label>Aramak istediğiniz müdürlük adını yazınız</mat-label>
+            <input [(ngModel)]="filterMudurKeyword" matInput (keyup)="applyFilter()" #input>
+        </mat-form-field>
+        @if(userYetki==="admin"){
+          <button mat-fab extended (click)="addMudurluk()" style="background-color: #0079c1; color: white; height: 56px; width: 15%">Müdürlük ekle</button>
+        }
+    </div>
+    <table mat-table [dataSource]="dataSource" class="example-container mat-elevation-z8" style="padding: 10px; margin-bottom: 50px;" 
+        matSort (matSortChange)="($event)">
+        @for (column of columns; track column) {
+          <ng-container matColumnDef="{{column.columnDef}}">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              {{column.header}}
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{element[column.columnDef]}}
+              <ng-container *ngIf="column.columnDef === 'buton'">
+                <button mat-icon-button>
+                  <mat-icon>check</mat-icon>        
+                </button>
+              </ng-container>
+            </td>
+          </ng-container>
+        }
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    
+  </div>
+

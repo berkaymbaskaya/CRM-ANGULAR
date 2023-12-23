@@ -1,0 +1,66 @@
+<ng-container *ngIf="isNotLoginPage(); else loginPageContent">
+	<mat-toolbar color="primary" class="example-toolbar">
+		<button mat-icon-button (click)="isExpanded = !isExpanded">
+			<mat-icon>menu</mat-icon>
+		</button>
+		<img style="width: 120px; height: 40px; background: transparent; margin-left: 25px"
+			src="/assets/elazig_bel_logo.png">
+		<mat-menu #menu="matMenu">
+			<button routerLink="/profil" mat-menu-item>Profilim</button>
+			<button (click)="logout" mat-menu-item>Çıkış</button>
+		</mat-menu>
+		<button [matMenuTriggerFor]="menu" mat-button style="margin-left: auto; display: flex" >
+			<mat-icon style="width: 35px;height: 35px;font-size: 35px;"> person_pin</mat-icon>
+		</button>
+	</mat-toolbar>
+
+	<mat-sidenav-container class="example-container" autosize>
+		<mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()"
+			(mouseleave)="mouseleave()">
+			<mat-nav-list>
+				<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent" routerLink="/anasayfa">
+					<div>
+						<mat-icon mat-list-icon>home</mat-icon>
+						<span class="full-width" *ngIf="isExpanded || isShowing">Anasayfa</span>
+					</div>
+				</mat-list-item>
+				<mat-list-item class="parent" routerLink="/talepler">
+					<mat-icon mat-list-icon>assignment</mat-icon>
+					<span class="full-width" *ngIf="isExpanded || isShowing">Talepler</span>
+				</mat-list-item>
+				<mat-list-item class="parent" routerLink="/gorevlerim">
+					<mat-icon mat-list-icon>work</mat-icon>
+					<span class="full-width" *ngIf="isExpanded || isShowing">Görevlerim</span>
+				</mat-list-item>
+				@if (userYetki === "creator" || userYetki === "admin" ) {
+				<mat-list-item class="parent" routerLink="/yonetim">
+					<mat-icon mat-list-icon>devicess</mat-icon>
+					<span class="full-width" *ngIf="isExpanded || isShowing">Yönetim</span>
+				</mat-list-item>
+				}
+				<mat-list-item class="parent" routerLink="/mudurlukler">
+					<mat-icon mat-list-icon>location_city</mat-icon>
+					<span class="full-width" *ngIf="isExpanded || isShowing">Müdürlükler </span>
+				</mat-list-item>
+				<mat-list-item class="parent" routerLink="/profil">
+					<mat-icon mat-list-icon>person</mat-icon>
+					<span class="full-width" *ngIf="isExpanded || isShowing">Profilim </span>
+				</mat-list-item>
+				<mat-list-item class="parent" (click)="logout()">
+					<mat-icon mat-list-icon>logout</mat-icon>
+					<span class="full-width" *ngIf="isExpanded || isShowing">Çıkış </span>
+				</mat-list-item>
+			</mat-nav-list>
+		</mat-sidenav>
+
+		<div class="example-sidenav-content">
+			<router-outlet></router-outlet>
+		</div>
+
+	</mat-sidenav-container>
+</ng-container>
+
+<ng-template #loginPageContent>
+	<!-- "/login" sayfasında görüntülenecek içerik -->
+	<router-outlet></router-outlet>
+</ng-template>

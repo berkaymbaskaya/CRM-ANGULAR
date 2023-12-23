@@ -1,0 +1,14 @@
+mat-card-subtitle{
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+mat-card {
+    width: 30%!important;
+    padding: 2rem;
+
+}
+@media only screen and (max-width:800px){
+    mat-card {
+        width: 100%!important;;
+    }
+}

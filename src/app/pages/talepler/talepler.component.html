@@ -1,0 +1,37 @@
+<mat-stepper #stepper style="height: 100%; background-color: #fafafa;">
+  <mat-step [stepControl]="firstFormGroup" label="Bekleyen Talepler">
+    <form [formGroup]="firstFormGroup">
+      <app-bekleyen-stepper></app-bekleyen-stepper>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" label="Görev Atanan Talepler">
+    <form [formGroup]="secondFormGroup">
+      <app-atanan-stepper></app-atanan-stepper>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup" label="Tamamlanan Talepler">
+    <form [formGroup]="thirdFormGroup">
+      <app-tamamlanan-stepper></app-tamamlanan-stepper>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="fouthFormGroup" label="Onaylanan Talepler">
+    <form [formGroup]="fouthFormGroup">
+      <app-onaylanan-stepper></app-onaylanan-stepper>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="fifthFormGroup" label="Tüm Talepler" state="list">
+    <form [formGroup]="fifthFormGroup">
+      <app-tum-stepper></app-tum-stepper>
+      <div style="height: 100px; margin-top: 20px;">
+        <!-- ??? -->
+        <button mat-button matStepperPrevious>Geri</button>
+        <button mat-button (click)="stepper.reset()">Başa Dön</button>
+      </div>
+    </form>
+  </mat-step>
+  <ng-template matStepperIcon="list">
+    <!-- ??? -->
+    <mat-icon>assignment</mat-icon>
+  </ng-template>
+</mat-stepper>
+
